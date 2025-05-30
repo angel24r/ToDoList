@@ -21,7 +21,7 @@ export default function TaskList() {
   }, []);
 
   function fetchTaskLists() {
-    fetch('http://localhost:8000/api/task-lists')
+    fetch('https://todolistservice-kc98.onrender.com/api/task-lists')
       .then((res) => res.json())
       .then((data) => {
         setTaskLists(data);
@@ -34,8 +34,8 @@ export default function TaskList() {
 
     const method = editingList ? 'PUT' : 'POST';
     const url = editingList
-      ? `http://localhost:8000/api/task-lists/${editingList.id}`
-      : 'http://localhost:8000/api/task-lists';
+      ? `https://todolistservice-kc98.onrender.com/api/task-lists/${editingList.id}`
+      : 'https://todolistservice-kc98.onrender.com/api/task-lists';
 
     fetch(url, {
       method,
@@ -52,7 +52,7 @@ export default function TaskList() {
 
   function deleteList(id) {
     if (!confirm('¿Seguro que quieres eliminar esta lista?')) return;
-    fetch(`http://localhost:8000/api/task-lists/${id}`, {
+    fetch(`https://todolistservice-kc98.onrender.com/api/task-lists/${id}`, {
       method: 'DELETE',
     }).then(() => {
       fetchTaskLists();
@@ -82,7 +82,7 @@ export default function TaskList() {
   }
 
   function fetchTasks(taskListId) {
-    fetch(`http://localhost:8000/api/task-lists/${taskListId}/`)
+    fetch(`https://todolistservice-kc98.onrender.com/api/task-lists/${taskListId}/`)
       .then((res) => res.json())
       .then((data) => {
         setTasks(data.tasks);

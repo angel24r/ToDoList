@@ -16,7 +16,7 @@ export default function TaskModal({ listId, onClose }) {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/task-lists/${listId.id}`)
+    fetch(`https://todolistservice-kc98.onrender.com/api/task-lists/${listId.id}`)
       .then(res => res.json())
       .then(data => {
         setTasks(Array.isArray(data) ? data : []);
@@ -25,7 +25,7 @@ export default function TaskModal({ listId, onClose }) {
   }, [listId.id]);
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/getFiles/${listId.id}`)
+        fetch(`https://todolistservice-kc98.onrender.com/api/getFiles/${listId.id}`)
         .then(res => res.json())
         .then(data => {
             setAttachments(Array.isArray(data) ? data : []); 
@@ -58,7 +58,7 @@ export default function TaskModal({ listId, onClose }) {
     const task = tasks.find(t => t.id === taskId);
     if (!task) return;
 
-    fetch(`http://localhost:8000/api/tasks/${taskId}`, {
+    fetch(`https://todolistservice-kc98.onrender.com/api/tasks/${taskId}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ completed: !task.completed }),
@@ -69,7 +69,7 @@ export default function TaskModal({ listId, onClose }) {
       });
   };
    const handleEditTask = (updatedTask) => {
-    fetch(`http://localhost:8000/api/tasks/${updatedTask.id}`, {
+    fetch(`https://todolistservice-kc98.onrender.com/api/tasks/${updatedTask.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedTask),
@@ -80,7 +80,7 @@ export default function TaskModal({ listId, onClose }) {
       });
   };
   const handleDeleteTask = (taskId) => {
-    fetch(`http://localhost:8000/api/tasks/${taskId}`, {
+    fetch(`https://todolistservice-kc98.onrender.com/api/tasks/${taskId}`, {
       method: 'DELETE',
     })
       .then(() => {
@@ -96,7 +96,7 @@ export default function TaskModal({ listId, onClose }) {
     formData.append('file', file);
     formData.append('task_list_id', listId.id);
 
-    fetch('http://localhost:8000/api/attachments', {
+    fetch('https://todolistservice-kc98.onrender.com/api/attachments', {
         method: 'POST',
         body: formData,
     })
@@ -111,7 +111,7 @@ export default function TaskModal({ listId, onClose }) {
         });
   };
   const handleDeleteFile = (id) => {
-  fetch(`http://localhost:8000/api/attachments/${id}`, {
+  fetch(`https://todolistservice-kc98.onrender.com/api/attachments/${id}`, {
     method: 'DELETE',
   })
     .then(res => {
