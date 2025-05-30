@@ -37,7 +37,7 @@ export default function TaskModal({ listId, onClose }) {
     e.preventDefault();
     if (!description.trim()) return;
 
-    fetch(`/api/tasks`, {
+    fetch(`https://todolistservice-kc98.onrender.com/api/tasks`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
