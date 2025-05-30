@@ -191,7 +191,7 @@ export default function TaskModal({ listId, onClose }) {
             {attachments.map(file => (
               <li key={file.id}>
                 {/* Puedes mostrar el nombre, link, etc. */}
-                <a href={`http://localhost:8000/storage/${file.file_path}`} target="_blank" rel="noopener noreferrer">
+                <a href={`https://todolistservice-kc98.onrender.com/storage/${file.file_path}`} target="_blank" rel="noopener noreferrer">
                   {file.name}    
                 </a>
                 <a
